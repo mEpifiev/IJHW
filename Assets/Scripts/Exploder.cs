@@ -17,9 +17,8 @@ public class Exploder : MonoBehaviour
         _raycaster.Hited -= Explode;
     }
 
-    public void Explode(Cube parent)
+    public void Explode(Cube cube)
     {
-        if (parent.TryGetComponent(out Rigidbody rigidbody))
-            rigidbody.AddExplosionForce(_explosionForce, parent.transform.position, _explosionRadius);
+        cube.Rigidbody.AddExplosionForce(_explosionForce, cube.transform.position, _explosionRadius);
     }
 }

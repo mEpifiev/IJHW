@@ -29,10 +29,9 @@ public class Spawner : MonoBehaviour
             Cube newCube = Instantiate(_cubePrefab, parent.transform.position, Quaternion.identity);
 
             Vector3 newScale = parent.transform.localScale / SizeDivider;
-            newCube.transform.localScale = newScale;
-
             float newSplitChance = parent.CurrentSplitChance / SplitChanceDivider;
-            newCube.SetSplitChance(newSplitChance);
+
+            newCube.Initialize(newScale, newSplitChance);
         }
     }
 }

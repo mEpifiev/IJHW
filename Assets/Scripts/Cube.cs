@@ -8,13 +8,17 @@ public class Cube : MonoBehaviour
 
     public float CurrentSplitChance => _currentSplitChance;
 
+    public Rigidbody Rigidbody { get; private set; }
+
     private void Awake()
     {
+        Rigidbody = GetComponent<Rigidbody>();
         _currentSplitChance = _maxSplitChance;
     }
 
-    public void SetSplitChance(float splitChance)
+    public void Initialize(Vector3 scale, float splitChance)
     {
+        transform.localScale = scale;
         _currentSplitChance = Mathf.Clamp(splitChance, 0f, _maxSplitChance);
     }
 }

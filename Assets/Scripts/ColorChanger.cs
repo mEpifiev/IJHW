@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class ColorChanger : MonoBehaviour
 {
     private Renderer _renderer;
 
-    private void Start()
+    private void Awake()
     {
         _renderer = GetComponent<Renderer>();
 
