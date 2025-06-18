@@ -7,18 +7,29 @@ public class Spawner : MonoBehaviour
     private const int SizeDivider = 2;
     private const float SplitChanceDivider = 2f;
 
+    [SerializeField] private Raycaster _raycaster;
     [SerializeField] private Cube _cubePrefab;
 
-    public void Spawn(Cube cube)
+    private void OnEnable()
+    {
+        _raycaster.Hited += Spawn;
+    }
+
+    private void OnDisable()
+    {
+        _raycaster.Hited -= Spawn;
+    }
+
+    private void Spawn(Cube parent)
     {
         int count = Random.Range(MinCount, MaxCount + 1);
 
-        Vector3 newScale = cube.transform.localScale / SizeDivider;
-        float newSplitChance = cube.CurrentSplitChance / SplitChanceDivider;
-
         for (int i = 0; i < count; i++)
         {
-            Cube newCube = Instantiate(_cubePrefab, cube.transform.position, Quaternion.identity);
+            Cube newCube = Instantiate(_cubePrefab, parent.transform.position, Quaternion.identity);
+
+            Vector3 newScale = parent.transform.localScale / SizeDivider;
+            float newSplitChance = parent.CurrentSplitChance / SplitChanceDivider;
 
             newCube.Initialize(newScale, newSplitChance);
         }
