@@ -14,7 +14,6 @@ public class ColorChanger : MonoBehaviour
 
     private void Change()
     {
-        if (_renderer != null)
-            _renderer.material.color = Random.ColorHSV();
+        _renderer.material.color = Random.ColorHSV();
     }
 }
