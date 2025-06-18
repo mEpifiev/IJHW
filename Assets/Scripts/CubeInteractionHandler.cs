@@ -28,9 +28,9 @@ public class CubeInteractionHandler : MonoBehaviour
 
     private void HandleHit(Cube cube)
     {
-        Destroy(cube.gameObject);
-
         _spawner.Spawn(cube);
         _exploder.Explode(cube);
+
+        Destroy(cube.gameObject);
     }
 }
