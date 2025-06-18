@@ -4,6 +4,7 @@ using UnityEngine;
 public class Raycaster : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
+    [SerializeField] private Exploder _exploder;
 
     [SerializeField] private float _maxDistance; 
 
@@ -33,6 +34,7 @@ public class Raycaster : MonoBehaviour
                 }
 
                 Destroy(cube.gameObject);
+                _exploder.Explode(cube);
             }
         }
     }
