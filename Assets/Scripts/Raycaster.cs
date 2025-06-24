@@ -25,7 +25,6 @@ public class Raycaster : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance))
             if(hit.collider.TryGetComponent(out Cube cube))
-                if (UnityEngine.Random.value <= cube.CurrentSplitChance)
                     Hited?.Invoke(cube);
     }
 }

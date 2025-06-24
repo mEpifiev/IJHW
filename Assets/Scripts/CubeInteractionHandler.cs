@@ -28,8 +28,11 @@ public class CubeInteractionHandler : MonoBehaviour
 
     private void HandleHit(Cube cube)
     {
-        _spawner.Spawn(cube);
-        _exploder.Explode(cube);
+        if (Random.value <= cube.CurrentSplitChance)
+        {
+            _spawner.Spawn(cube);
+            _exploder.Explode(cube);
+        }
 
         Destroy(cube.gameObject);
     }
